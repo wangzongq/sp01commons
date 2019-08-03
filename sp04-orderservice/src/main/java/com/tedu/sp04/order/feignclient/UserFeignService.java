@@ -11,8 +11,8 @@ import com.tedu.web.util.JsonResult;
 @FeignClient(name = "user-service",fallback = UserFeignServiceFB.class)
 public interface UserFeignService {
 	@GetMapping("/{userId}")
-	JsonResult<User> getUser(@PathVariable Integer userId);
+	JsonResult<User> getUser(@PathVariable("userId") Integer userId);
 	
 	@GetMapping("/{userId}/score")
-	JsonResult addScore(@PathVariable Integer userId, @RequestParam Integer score);
+	JsonResult addScore(@PathVariable("userId") Integer userId, @RequestParam(name = "score") Integer score);
 }
